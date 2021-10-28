@@ -1,14 +1,14 @@
 pipeline {
     agent {
-        dockerfile {
-            filename 'Dockerfile.jenkinsAgent'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-        docker {
+     docker {
             image 'node:lts-buster-slim'
             args '-p 3000:3000'
         }
     }
+    dockerfile {
+            filename 'Dockerfile.jenkinsAgent'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
     environment {
         CI = 'true'
     }
